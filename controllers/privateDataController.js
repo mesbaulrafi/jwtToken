@@ -2,7 +2,7 @@ const privateDataController =  async (req, res) => {
   try {
     res.status(200).json({
       success: true,
-      message: "Amr Facebook Idr Pass *******",
+      message: "Password is Correct, you can access the private data",
     });
   } catch (error) {
     res.status(500).json({
