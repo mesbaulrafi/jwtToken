@@ -1,9 +1,10 @@
+
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../models/userSchema");
-let pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-let lowercasePattern =
-  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+let emailpattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+let lowerPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
 // registrationController
 const registrationController = async (req, res) => {
@@ -36,7 +37,7 @@ const registrationController = async (req, res) => {
       });
     }
     // email validation
-    if (!pattern.test(email)) {
+    if (!emailpattern.test(email)) {
       return res.status(400).json({
         success: false,
         message: "Please enter a valid email",
@@ -45,7 +46,7 @@ const registrationController = async (req, res) => {
     console.log(email);
 
     // password validation
-    if (!lowercasePattern.test(password)) {
+    if (!lowerPattern.test(password)) {
       return res.status(400).json({
         success: false,
         message:
