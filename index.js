@@ -9,10 +9,17 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+
+// Database CONNECTION
+
+mongoDb();
+
+
 // MAIN ROUTE
 app.use("/api/v1/auth", authRouter);
-// Database CONNECTION
-mongoDb();
+
+
+
 
 // SERVER PORT
 app.listen(5000, () => {
